@@ -154,12 +154,13 @@ class _CovidBarChartState extends State<CovidBarChart> {
           gridData: FlGridData(
             show: true,
             horizontalInterval: devided.toDouble(),
-            checkToShowHorizontalLine: (value) => value % devided == 0,
-            getDrawingHorizontalLine: (value) => FlLine(
-              color: Colors.black12,
-              strokeWidth: 1.0,
-              dashArray: [5],
-            ),
+            getDrawingHorizontalLine: (value) {
+              return FlLine(
+                color: Colors.black12,
+                strokeWidth: 1.0,
+                dashArray: [5],
+              );
+            },
           ),
           borderData: FlBorderData(show: false),
           barGroups: datePiker

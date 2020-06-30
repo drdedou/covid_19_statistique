@@ -5,7 +5,6 @@ import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../localization/demo_localizations.dart';
-import '../models/custem_exception.dart';
 import '../localization/flags.dart';
 import '../config/palette.dart';
 import './drop_down_menu.dart';
