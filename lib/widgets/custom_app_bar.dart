@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
 import '../localization/demo_localizations.dart';
@@ -21,18 +22,34 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Future<void> getLocation(BuildContext context) async {
     final lang = DemoLocalizations.of(context).getTraslat;
     bool error = false;
+    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+
+    Location location = new Location();
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    LocationData _locationData;
 
     try {
-      if (!(await Geolocator().isLocationServiceEnabled())) {
-        error = true;
-        throw CustemException(messageError: '');
+      _serviceEnabled = await location.serviceEnabled();
+      if (!_serviceEnabled) {
+        _serviceEnabled = await location.requestService();
+        if (!_serviceEnabled) {
+          return;
+        }
       }
 
-      Position position = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
+      _permissionGranted = await location.hasPermission();
+      if (_permissionGranted == PermissionStatus.denied) {
+        _permissionGranted = await location.requestPermission();
+        if (_permissionGranted != PermissionStatus.granted) {
+          return;
+        }
+      }
 
-      List<Placemark> placemark = await Geolocator()
-          .placemarkFromCoordinates(position.latitude, position.longitude);
+      _locationData = await location.getLocation();
+
+      List<Placemark> placemark = await geolocator.placemarkFromCoordinates(
+          _locationData.latitude, _locationData.longitude);
       Provider.of<Flags>(context, listen: false)
           .setCountry(placemark.first.isoCountryCode);
     } catch (_) {
