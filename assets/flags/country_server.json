@@ -1,0 +1,374 @@
+{
+        "AF": "CountryCode",
+
+        "AL": "CountryCode",
+
+        "DZ": "CountryCode",
+
+        "AD": "CountryCode",
+
+        "AO": "CountryCode",
+
+        "AG": "CountryCode",
+
+        "AR": "CountryCode",
+
+        "AM": "CountryCode",
+
+        "AU": "CountryCode",
+
+        "AT": "CountryCode",
+
+        "AZ": "CountryCode",
+
+        "BS": "CountryCode",
+
+        "BH": "CountryCode",
+
+        "BD": "CountryCode",
+
+        "BB": "CountryCode",
+
+        "BY": "CountryCode",
+
+        "BE": "CountryCode",
+
+        "BZ": "CountryCode",
+
+        "BJ": "CountryCode",
+
+        "BT": "CountryCode",
+
+        "BO": "CountryCode",
+
+        "BA": "CountryCode",
+
+        "BW": "CountryCode",
+
+        "BR": "CountryCode",
+
+        "BN": "CountryCode",
+
+        "BG": "CountryCode",
+
+        "BF": "CountryCode",
+
+        "BI": "CountryCode",
+
+        "KH": "CountryCode",
+
+        "CM": "CountryCode",
+
+        "CA": "CountryCode",
+
+        "CV": "CountryCode",
+
+        "CF": "CountryCode",
+
+        "TD": "CountryCode",
+
+        "CL": "CountryCode",
+
+        "CN": "CountryCode",
+
+        "CO": "CountryCode",
+
+        "KM": "CountryCode",
+
+        "CG": "CountryCode",
+
+        "CD": "CountryCode",
+
+        "CR": "CountryCode",
+
+        "HR": "CountryCode",
+
+        "CU": "CountryCode",
+
+        "CY": "CountryCode",
+
+        "CZ": "CountryCode",
+
+        "CI": "CountryCode",
+
+        "DK": "CountryCode",
+
+        "DJ": "CountryCode",
+
+        "DM": "CountryCode",
+
+        "DO": "CountryCode",
+
+        "EC": "CountryCode",
+
+        "EG": "CountryCode",
+
+        "SV": "CountryCode",
+
+        "GQ": "CountryCode",
+
+        "ER": "CountryCode",
+
+        "EE": "CountryCode",
+
+        "ET": "CountryCode",
+
+        "FJ": "CountryCode",
+
+        "FI": "CountryCode",
+
+        "FR": "CountryCode",
+
+        "GA": "CountryCode",
+
+        "GM": "CountryCode",
+
+        "GE": "CountryCode",
+
+        "DE": "CountryCode",
+
+        "GH": "CountryCode",
+
+        "GR": "CountryCode",
+
+        "GD": "CountryCode",
+
+        "GT": "CountryCode",
+
+        "GN": "CountryCode",
+
+        "GW": "CountryCode",
+
+        "GY": "CountryCode",
+
+        "HT": "CountryCode",
+
+        "VA": "CountryCode",
+
+        "HN": "CountryCode",
+
+        "HU": "CountryCode",
+
+        "IS": "CountryCode",
+
+        "IN": "CountryCode",
+
+        "ID": "CountryCode",
+
+        "IR": "CountryCode",
+
+        "IQ": "CountryCode",
+
+        "IE": "CountryCode",
+
+        "IL": "CountryCode",
+
+        "IT": "CountryCode",
+
+        "JM": "CountryCode",
+
+        "JP": "CountryCode",
+
+        "JO": "CountryCode",
+
+        "KZ": "CountryCode",
+
+        "KE": "CountryCode",
+
+        "KR": "CountryCode",
+
+        "KW": "CountryCode",
+
+        "KG": "CountryCode",
+
+        "LA": "CountryCode",
+
+        "LV": "CountryCode",
+
+        "LB": "CountryCode",
+
+        "LS": "CountryCode",
+
+        "LR": "CountryCode",
+
+        "LY": "CountryCode",
+
+        "LI": "CountryCode",
+
+        "LT": "CountryCode",
+
+        "LU": "CountryCode",
+
+        "MK": "CountryCode",
+
+        "MG": "CountryCode",
+
+        "MW": "CountryCode",
+
+        "MY": "CountryCode",
+
+        "MV": "CountryCode",
+
+        "ML": "CountryCode",
+
+        "MT": "CountryCode",
+
+        "MR": "CountryCode",
+
+        "MU": "CountryCode",
+
+        "MX": "CountryCode",
+
+        "MD": "CountryCode",
+
+        "MC": "CountryCode",
+
+        "MN": "CountryCode",
+
+        "ME": "CountryCode",
+
+        "MA": "CountryCode",
+
+        "MZ": "CountryCode",
+
+        "MM": "CountryCode",
+
+        "NA": "CountryCode",
+
+        "NP": "CountryCode",
+
+        "NL": "CountryCode",
+
+        "NZ": "CountryCode",
+
+        "NI": "CountryCode",
+
+        "NE": "CountryCode",
+
+        "NG": "CountryCode",
+  
+        "NO": "CountryCode",
+
+        "OM": "CountryCode",
+ 
+        "PK": "CountryCode",
+
+        "PS": "CountryCode",
+
+        "PA": "CountryCode",
+
+        "PG": "CountryCode",
+
+        "PY": "CountryCode",
+
+        "PE": "CountryCode",
+ 
+        "PH": "CountryCode",
+
+        "PL": "CountryCode",
+
+        "PT": "CountryCode",
+
+        "QA": "CountryCode",
+
+        "XK": "CountryCode",
+
+        "RO": "CountryCode",
+
+        "RU": "CountryCode",
+
+        "RW": "CountryCode",
+
+        "KN": "CountryCode",
+
+        "LC": "CountryCode",
+
+        "VC": "CountryCode",
+
+        "SM": "CountryCode",
+
+        "ST": "CountryCode",
+
+        "SA": "CountryCode",
+
+        "SN": "CountryCode",
+
+        "RS": "CountryCode",
+
+        "SC": "CountryCode",
+
+        "SL": "CountryCode",
+
+        "SG": "CountryCode",
+
+        "SK": "CountryCode",
+
+        "SI": "CountryCode",
+
+        "SO": "CountryCode",
+
+        "ZA": "CountryCode",
+
+        "SS": "CountryCode",
+
+        "ES": "CountryCode",
+
+        "LK": "CountryCode",
+
+        "SD": "CountryCode",
+
+        "SR": "CountryCode",
+
+        "SZ": "CountryCode",
+
+        "SE": "CountryCode",
+
+        "CH": "CountryCode",
+
+        "SY": "CountryCode",
+
+        "TW": "CountryCode",
+
+        "TJ": "CountryCode",
+    
+        "TZ": "CountryCode",
+
+        "TH": "CountryCode",
+
+        "TL": "CountryCode",
+
+        "TG": "CountryCode",
+
+        "TT": "CountryCode",
+
+        "TN": "CountryCode",
+
+        "TR": "CountryCode",
+
+        "UG": "CountryCode",
+
+        "UA": "CountryCode",
+
+        "AE": "CountryCode",
+
+        "GB": "CountryCode",
+
+        "US": "CountryCode",
+
+        "UY": "CountryCode",
+
+        "UZ": "CountryCode",
+
+        "VE": "CountryCode",
+
+        "VN": "CountryCode",
+
+        "EH": "CountryCode",
+
+        "YE": "CountryCode",
+
+        "ZM": "CountryCode",
+
+        "ZW": "CountryCode"
+
+}
