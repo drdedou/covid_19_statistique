@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       icon: const Icon(
-                        Icons.event_note,
+                        Icons.assignment,
                         color: Colors.white,
                       ),
                       label: Text(

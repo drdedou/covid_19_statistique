@@ -24,7 +24,8 @@
     "er_country": "Something went wrong\nswipe down to refresh",
     "search": "Search...",
     "tab_close": "Tap back again to exit",
-    "pastor_title": "Algorithm\nPasteur Institut",
-    "pastor_discription": "This algorithm is transferred from the Pasteur Institute according to the latest updates",
-    "error_info": "This week contains incomplete information. We apologize for not showing"
+    "pastor_title": "Algorithm Pasteur Institut",
+    "pastor_discription": "This algorithm is transferred from the Pasteur Institute according to the latest updates\nThe purpose of this questionnaire is to direct you only according to your health condition and the symptoms you are reporting. The advice he provides has no medicinal value",
+    "error_info": "This week contains incomplete information. We apologize for not showing",
+    "i_get_it": "I Got It"
 }

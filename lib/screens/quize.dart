@@ -31,35 +31,34 @@ class _QuizeState extends State<Quize> {
                   color: Palette.primaryColor,
                   child: ClipImage(widthScreen: widthScreen),
                 ),
-                Positioned(
-                  bottom: -55,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.grey.shade600,
-                    ),
-                    padding: const EdgeInsets.all(15),
-                    child: Text(
-                      lang('pastor_title'),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 23.0,
-                        fontWeight: FontWeight.w200,
-                      ),
-                      textAlign: TextAlign.center,
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30),
+                    color: Colors.blue,
+                  ),
+                  margin: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 5,
+                  ),
+                  child: Text(
+                    lang('pastor_title'),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
               ],
             ),
             Container(
-              padding: const EdgeInsets.only(top: 70, bottom: 20),
-              width: widthScreen * 0.8,
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              width: widthScreen * 0.9,
               child: Text(
                 lang('pastor_discription'),
                 style: const TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 17.0,
                   color: Colors.white,
                 ),
                 textAlign: TextAlign.center,
@@ -73,16 +72,16 @@ class _QuizeState extends State<Quize> {
                   horizontal: 20.0,
                 ),
                 onPressed: () {},
-                color: Colors.blue,
+                color: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 icon: const Icon(
-                  Icons.event_note,
+                  Icons.done,
                   color: Colors.white,
                 ),
                 label: Text(
-                  lang('ask_btn'),
+                  lang('i_get_it'),
                   style: Styles.buttonTextStyle,
                 ),
                 textColor: Colors.white,
