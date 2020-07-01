@@ -1,8 +1,7 @@
 [
     {
         "question_code": "q1_1",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_1_b_1",
@@ -11,10 +10,13 @@
                 "majorGravityFactors": false,
                 "isCough": false,
                 "isPains": false,
-                "isFever": false,
+                "isFever": true,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_1_b_2",
@@ -26,7 +28,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_1_b_3",
@@ -38,7 +43,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_1_b_4",
@@ -47,10 +55,13 @@
                 "majorGravityFactors": false,
                 "isCough": false,
                 "isPains": false,
-                "isFever": false,
+                "isFever": true,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_1_b_5",
@@ -59,29 +70,34 @@
                 "majorGravityFactors": false,
                 "isCough": false,
                 "isPains": false,
-                "isFever": false,
+                "isFever": true,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_2",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_2_b_1",
                 "counterMinorGravityFactor": false,
                 "prognosticFactors": true,
                 "majorGravityFactors": false,
-                "isCough": false,
+                "isCough": true,
                 "isPains": false,
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_2_b_2",
@@ -93,14 +109,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_3",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_3_b_1",
@@ -112,7 +130,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_3_b_2",
@@ -124,14 +145,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_4",
         "sub_msg": "q1_4_1",
-        "pass": false,
         "list_button": [
             {
                 "button_text": "q1_4_b_1",
@@ -139,11 +162,14 @@
                 "prognosticFactors": true,
                 "majorGravityFactors": false,
                 "isCough": false,
-                "isPains": false,
+                "isPains": true,
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_4_b_2",
@@ -155,14 +181,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_5",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_5_b_1",
@@ -172,9 +200,12 @@
                 "isCough": false,
                 "isPains": false,
                 "isFever": false,
-                "isDiarrhea": false,
+                "isDiarrhea": true,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_5_b_2",
@@ -186,14 +217,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_6",
-        "sub_msg": null,
-        "pass": true,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_6_b_1",
@@ -205,7 +238,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_6_b_2",
@@ -217,14 +253,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": true
             }
         ]
     },
     {
         "question_code": "q1_6_1",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_6_1_b_1",
@@ -236,7 +274,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_6_1_b_2",
@@ -248,14 +289,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_7",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_7_b_1",
@@ -267,7 +310,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_7_b_2",
@@ -279,14 +325,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q1_8",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q1_8_b_1",
@@ -298,7 +346,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q1_8_b_2",
@@ -310,14 +361,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_1",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_1_b_1",
@@ -329,7 +382,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": "less_15"
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "less_15",
+                "pass": false
             },
             {
                 "button_text": "q2_1_b_2",
@@ -341,7 +397,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": "bt_15_50"
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "bt_15_50",
+                "pass": false
             },
             {
                 "button_text": "q2_1_b_3",
@@ -353,7 +412,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": "bt_50_65"
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "bt_50_65",
+                "pass": false
             },
             {
                 "button_text": "q2_1_b_4",
@@ -365,30 +427,212 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": "sup_65"
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "sup_65",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_2",
         "sub_msg": "q2_2_1",
-        "pass": false,
-        "list_button": []
+        "list_button": [
+            {
+                "button_text": "q2_2_b_1",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 50.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_2_b_2",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 65.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_2_b_3",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 75.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_2_b_4",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 85.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_2_b_5",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 95.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_2_b_6",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 110.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
+            }
+        ]
     },
     {
         "question_code": "q2_3",
         "sub_msg": "q2_3_1",
-        "pass": false,
-        "list_button": []
+        "list_button": [
+            {
+                "button_text": "q2_3_b_1",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 1.40,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_3_b_2",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 1.55,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_3_b_3",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 1.65,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_3_b_4",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 1.75,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_3_b_5",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 1.85,
+                "age": "",
+                "pass": false
+            },
+            {
+                "button_text": "q2_3_b_6",
+                "counterMinorGravityFactor": false,
+                "prognosticFactors": false,
+                "majorGravityFactors": false,
+                "isCough": false,
+                "isPains": false,
+                "isFever": false,
+                "isDiarrhea": false,
+                "isAnosmie": false,
+                "weight": 0.0,
+                "length": 2.0,
+                "age": "",
+                "pass": false
+            }
+        ]
     },
     {
         "question_code": "q2_4",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_4_b_1",
-                "counterMinorGravityFactor": true,
+                "counterMinorGravityFactor": false,
                 "prognosticFactors": true,
                 "majorGravityFactors": false,
                 "isCough": false,
@@ -396,7 +640,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_4_b_2",
@@ -408,7 +655,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_4_b_3",
@@ -420,14 +670,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_5",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_5_b_1",
@@ -439,7 +691,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_5_b_2",
@@ -451,14 +706,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_6",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_6_b_1",
@@ -470,7 +727,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_6_b_2",
@@ -482,14 +742,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_7",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_7_b_1",
@@ -501,7 +763,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_7_b_2",
@@ -513,14 +778,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_8",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_8_b_1",
@@ -532,7 +799,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_8_b_2",
@@ -544,14 +814,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_9",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_9_b_1",
@@ -563,7 +835,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_9_b_2",
@@ -575,14 +850,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_10",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_10_b_1",
@@ -594,7 +871,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_10_b_2",
@@ -606,7 +886,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_10_b_3",
@@ -618,14 +901,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_11",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_11_b_1",
@@ -636,8 +921,11 @@
                 "isPains": false,
                 "isFever": false,
                 "isDiarrhea": false,
-                "isAnosmie": false,
-                "age": null
+                "isAnosmie": true,
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_11_b_2",
@@ -649,14 +937,16 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     },
     {
         "question_code": "q2_12",
-        "sub_msg": null,
-        "pass": false,
+        "sub_msg": "",
         "list_button": [
             {
                 "button_text": "q2_12_b_1",
@@ -668,7 +958,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_12_b_2",
@@ -680,7 +973,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             },
             {
                 "button_text": "q2_12_b_3",
@@ -692,26 +988,10 @@
                 "isFever": false,
                 "isDiarrhea": false,
                 "isAnosmie": false,
-                "age": null
-            }
-        ]
-    },
-    {
-        "question_code": "q3_1",
-        "sub_msg": "q3_1_1",
-        "pass": false,
-        "list_button": [
-            {
-                "button_text": "q3_1_b_1",
-                "counterMinorGravityFactor": false,
-                "prognosticFactors": true,
-                "majorGravityFactors": false,
-                "isCough": false,
-                "isPains": false,
-                "isFever": false,
-                "isDiarrhea": false,
-                "isAnosmie": false,
-                "age": null
+                "weight": 0.0,
+                "length": 0.0,
+                "age": "",
+                "pass": false
             }
         ]
     }

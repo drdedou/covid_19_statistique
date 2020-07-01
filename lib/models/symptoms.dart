@@ -16,5 +16,8 @@ class Symptoms {
   bool isDiarrhea = false; // إسهال
   bool isAnosmie = false; // فقر دم
 
+  int weight = 0;
+  int length = 0;
+
   String age;
 }
