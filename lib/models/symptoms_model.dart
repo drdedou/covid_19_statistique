@@ -5,7 +5,7 @@ enum Age {
   sup_65,
 }
 
-class Symptoms {
+class SymptomsModel {
   int counterMinorGravityFactor = 0; // العوامل الصغرى
   int prognosticFactors = 0; //العوامل الإنذارية
   int majorGravityFactors = 0; // العوامل الكبرى
