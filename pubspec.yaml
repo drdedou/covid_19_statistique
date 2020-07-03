@@ -62,6 +62,7 @@ flutter:
     - assets/flags/country_name.json
     - assets/flags/country_name_ar.json
     - assets/flags/country_server.json
+    - assets/symptoms/symptoms_data.json
     - assets/flags/images/
     - assets/images/
   #   - images/a_dot_ham.jpeg

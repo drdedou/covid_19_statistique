@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import './providers/symptoms_data.dart';
 import './providers/summary.dart';
 import './screens/bottom_nav_screen.dart';
 import './localization/demo_localizations.dart';
@@ -91,6 +92,9 @@ class _MyAppState extends State<MyApp> {
           ),
           ChangeNotifierProvider.value(
             value: CovsSummary(),
+          ),
+          ChangeNotifierProvider.value(
+            value: Symptoms(),
           ),
         ],
         child: BottomNavScreen(),
