@@ -16,8 +16,24 @@ class SymptomsModel {
   bool isDiarrhea = false; // إسهال
   bool isAnosmie = false; // فقر دم
 
-  int weight = 0;
-  int length = 0;
+  double weight = 0.0;
+  double length = 0.0;
+  double bMI = 0.0;
 
-  String age;
+  Age age;
+
+  void restart() {
+    counterMinorGravityFactor = 0;
+    prognosticFactors = 0;
+    majorGravityFactors = 0;
+    isCough = false;
+    isPains = false;
+    isFever = false;
+    isDiarrhea = false;
+    isAnosmie = false;
+    weight = 0.0;
+    length = 0.0;
+    bMI = 0.0;
+    age = null;
+  }
 }

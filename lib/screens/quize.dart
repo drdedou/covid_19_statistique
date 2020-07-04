@@ -1,8 +1,11 @@
+import 'dart:math' as math;
+
 import 'package:covid_19_statistique/providers/symptoms_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+import '../models/symptoms_model.dart';
 import '../config/palette.dart';
 import '../config/styles.dart';
 import '../localization/demo_localizations.dart';
@@ -13,6 +16,7 @@ class Quize extends StatelessWidget {
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
     final lang = DemoLocalizations.of(context).getTraslat;
+    final symptomsModel = SymptomsModel();
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(),
@@ -32,15 +36,21 @@ class Quize extends StatelessWidget {
             builder: (ctx, symptoms, child) {
               final listsymptomsData = symptoms.getSymptomsData;
               return SingleChildScrollView(
-                child: !symptoms.getIsIGetIt
-                    ? introTestPastor(widthScreen, lang, symptoms)
-                    : QuizStart(
-                        symptomsData: listsymptomsData[symptoms.getIndex],
-                        widthScreen: widthScreen,
-                        index: symptoms.getIndex,
-                        lengthSymptoms: listsymptomsData.length,
+                child: symptoms.getMsgShow.isNotEmpty
+                    ? ResultMsg(
+                        msg: symptoms.getMsgShow,
                         symptoms: symptoms,
-                      ),
+                        symptomsModel: symptomsModel)
+                    : !symptoms.getIsIGetIt
+                        ? introTestPastor(widthScreen, lang, symptoms)
+                        : QuizStart(
+                            symptomsData: listsymptomsData[symptoms.getIndex],
+                            widthScreen: widthScreen,
+                            index: symptoms.getIndex,
+                            lengthSymptoms: listsymptomsData.length,
+                            symptoms: symptoms,
+                            symptomsModel: symptomsModel,
+                          ),
               );
             },
           );
@@ -126,12 +136,94 @@ class Quize extends StatelessWidget {
   }
 }
 
+class ResultMsg extends StatelessWidget {
+  final String msg;
+  final Symptoms symptoms;
+  final SymptomsModel symptomsModel;
+
+  const ResultMsg({this.msg, this.symptoms, this.symptomsModel});
+
+  @override
+  Widget build(BuildContext context) {
+    final lang = DemoLocalizations.of(context).getTraslat;
+    return SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                lang('msg_header'),
+                style: const TextStyle(
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white),
+              ),
+            ),
+            Card(
+              elevation: 3,
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      lang(msg),
+                    ),
+                  ),
+                  Card(
+                    margin: const EdgeInsets.all(10.0),
+                    elevation: 3,
+                    color: Colors.blueGrey.shade50,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        lang("msg_global"),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, bottom: 50),
+              child: FlatButton.icon(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 20.0,
+                ),
+                onPressed: () async {
+                  symptomsModel.restart();
+                  await symptoms.newStart();
+                },
+                color: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                icon: const Icon(
+                  Icons.done,
+                  color: Colors.white,
+                ),
+                label: Text(
+                  lang('i_get_it'),
+                  style: Styles.buttonTextStyle,
+                ),
+                textColor: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class QuizStart extends StatelessWidget {
   final SymptomsData symptomsData;
   final double widthScreen;
   final int index;
   final int lengthSymptoms;
   final Symptoms symptoms;
+  final SymptomsModel symptomsModel;
 
   const QuizStart({
     this.symptomsData,
@@ -139,6 +231,7 @@ class QuizStart extends StatelessWidget {
     this.index,
     this.lengthSymptoms,
     this.symptoms,
+    this.symptomsModel,
   });
   @override
   Widget build(BuildContext context) {
@@ -196,7 +289,8 @@ class QuizStart extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 ),
-                onPressed: () => nextstep(btn: btn, symptoms: symptoms),
+                onPressed: () => nextstep(
+                    btn: btn, symptoms: symptoms, symptomsModel: symptomsModel),
                 child: Container(
                   constraints: BoxConstraints(minWidth: 50, maxWidth: 130),
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -218,10 +312,181 @@ class QuizStart extends StatelessWidget {
   }
 }
 
-void nextstep({ListButton btn, Symptoms symptoms}) {
-  if (symptoms.getIndex < 20) {
-    symptoms.setIndex(isPass: false);
+void nextstep(
+    {ListButton btn, Symptoms symptoms, SymptomsModel symptomsModel}) {
+  if (symptoms.getIndex <= 20) {
+    if (btn.counterMinorGravityFactor) {
+      symptomsModel.counterMinorGravityFactor++;
+    }
+
+    if (btn.prognosticFactors) {
+      symptomsModel.prognosticFactors++;
+    }
+
+    if (btn.majorGravityFactors) {
+      symptomsModel.majorGravityFactors++;
+    }
+
+    if (btn.isCough) {
+      symptomsModel.isCough = true;
+    }
+
+    if (btn.isPains) {
+      symptomsModel.isPains = true;
+    }
+
+    if (btn.isFever) {
+      symptomsModel.isFever = true;
+    }
+
+    if (btn.isDiarrhea) {
+      symptomsModel.isDiarrhea = true;
+    }
+
+    if (btn.isAnosmie) {
+      symptomsModel.isAnosmie = true;
+    }
+
+    if (btn.weight != 0.0) {
+      symptomsModel.weight = btn.weight;
+    }
+
+    if (btn.length != 0.0) {
+      symptomsModel.length = btn.length;
+    }
+
+    if (btn.age.isNotEmpty) {
+      switch (btn.age) {
+        case "less_15":
+          symptomsModel.age = Age.less_15;
+          symptoms.setMsgShow("msg_less_15");
+          break;
+        case "bt_15_50":
+          symptomsModel.age = Age.bt_15_50;
+          break;
+        case "bt_50_65":
+          symptomsModel.age = Age.bt_50_65;
+          break;
+        case "sup_65":
+          symptomsModel.age = Age.sup_65;
+          break;
+      }
+    }
+
+    print(
+        'counterMinorGravityFactor ${symptomsModel.counterMinorGravityFactor}');
+    print('prognosticFactors ${symptomsModel.prognosticFactors}');
+    print('majorGravityFactors ${symptomsModel.majorGravityFactors}');
+    print('isCough ${symptomsModel.isCough}');
+    print('isPains ${symptomsModel.isPains}');
+    print('isFever ${symptomsModel.isFever}');
+    print('isDiarrhea ${symptomsModel.isDiarrhea}');
+    print('isAnosmie ${symptomsModel.isAnosmie}');
+    print('weight ${symptomsModel.weight}');
+    print('length ${symptomsModel.length}');
+    print('age ${symptomsModel.age}');
+    ////////////// test
+    //symptoms.setMsgShow("msg_age>50");
+
+    if (btn.pass) {
+      symptoms.setIndex(isPass: true);
+      return;
+    }
+    if (symptoms.getIndex < 20) {
+      symptoms.setIndex(isPass: false);
+    } else if (symptoms.getIndex == 20) {
+      symptomsModel.bMI =
+          symptomsModel.weight / math.pow(symptomsModel.length, 2);
+
+      getMessage(symptomsModel: symptomsModel, symptoms: symptoms);
+    }
   }
+}
+
+void getMessage({SymptomsModel symptomsModel, Symptoms symptoms}) {
+  if (symptomsModel.age == Age.less_15) {
+    symptoms.setMsgShow("msg_less_15");
+    return;
+  }
+
+  if (symptomsModel.majorGravityFactors >= 1) {
+    symptoms.setMsgShow("msg_danger");
+    return;
+  }
+
+  if (symptomsModel.isFever && symptomsModel.isCough) {
+    if (symptomsModel.prognosticFactors == 0) {
+      symptoms.setMsgShow("msg_with_0_prognosticFactors");
+      return;
+    } else if (symptomsModel.prognosticFactors >= 1) {
+      if (symptomsModel.counterMinorGravityFactor == 1) {
+        symptoms.setMsgShow("msg_with_1_counterMinorGravityFactor");
+        return;
+      } else if (symptomsModel.counterMinorGravityFactor >= 1) {
+        symptoms.setMsgShow("1_counterMinorGravityFactor");
+        return;
+      }
+    }
+
+    if (symptomsModel.isFever ||
+        (!symptomsModel.isFever &&
+            (symptomsModel.isDiarrhea ||
+                (symptomsModel.isCough && symptomsModel.isPains) ||
+                (symptomsModel.isCough && symptomsModel.isAnosmie) ||
+                (symptomsModel.isPains && symptomsModel.isAnosmie)))) {
+      if (symptomsModel.prognosticFactors <= 0) {
+        if (symptomsModel.age == Age.bt_15_50) {
+          symptoms.setMsgShow("msg_age<50");
+          return;
+        } else if (symptomsModel.age == Age.bt_50_65 ||
+            symptomsModel.age == Age.sup_65) {
+          symptoms.setMsgShow("msg_age>50");
+          return;
+        }
+      }
+
+      if (symptomsModel.counterMinorGravityFactor >= 1) {
+        symptoms.setMsgShow("msg_>1_minor");
+        return;
+      }
+
+      if (symptomsModel.prognosticFactors >= 1) {
+        if (symptomsModel.counterMinorGravityFactor <= 0) {
+          symptoms.setMsgShow("msg_=0_minor");
+          return;
+        } else if (symptomsModel.counterMinorGravityFactor >= 2) {
+          symptoms.setMsgShow("msg_>2_minor");
+          return;
+        }
+      }
+    }
+  }
+
+  if ((!symptomsModel.isFever) &&
+      (symptomsModel.isCough ||
+          symptomsModel.isPains ||
+          symptomsModel.isAnosmie)) {
+    if (symptomsModel.prognosticFactors >= 1) {
+      symptoms.setMsgShow("msg_>1_prognosticFactors");
+      return;
+    } else if (symptomsModel.prognosticFactors <= 0) {
+      symptoms.setMsgShow("msg_<=0_prognosticFactors");
+      return;
+    }
+  }
+
+  if ((!symptomsModel.isCough) &&
+      (!symptomsModel.isPains) &&
+      (!symptomsModel.isFever) &&
+      (!symptomsModel.isDiarrhea) &&
+      (!symptomsModel.isAnosmie) &&
+      (symptomsModel.prognosticFactors == 0)) {
+    symptoms.setMsgShow("msg_good");
+    return;
+  }
+
+  symptoms.setMsgShow("msg_with_1_counterMinorGravityFactor");
+  return;
 }
 
 class ClipImage extends StatelessWidget {

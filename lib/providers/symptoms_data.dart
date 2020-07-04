@@ -72,6 +72,21 @@ class ListButton {
 class Symptoms with ChangeNotifier {
   bool _isIGetIt = false;
   int _index = 0;
+  String _msgShow = "";
+
+  void setMsgShow(String newMsgShow) {
+    _msgShow = newMsgShow;
+    notifyListeners();
+  }
+
+  Future<void> newStart() async {
+    await loadSymptomsData();
+    notifyListeners();
+  }
+
+  String get getMsgShow {
+    return _msgShow;
+  }
 
   void setIndex({bool isPass}) {
     if (isPass) {
@@ -102,6 +117,7 @@ class Symptoms with ChangeNotifier {
   }
 
   Future<void> loadSymptomsData() async {
+    _msgShow = "";
     _symptomsData = [];
     _isIGetIt = false;
     _index = 0;
