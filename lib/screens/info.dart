@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'package:square_in_app_payments/models.dart' as model;
+import 'package:square_in_app_payments/in_app_payments.dart' as inApp;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../localization/demo_localizations.dart';
-import '../config/styles.dart';
 import '../config/palette.dart';
 import '../widgets/custom_app_bar.dart';
 
@@ -63,6 +65,48 @@ class _InfoState extends State<Info> {
                                 color: Colors.grey.shade800,
                               ),
                               textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Card(
+                    elevation: 5,
+                    child: Container(
+                      width: width - 20,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              lang('credits'),
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            InkWell(
+                              onTap: () => launch('https://unsplash.com/'),
+                              child: Text(
+                                "Unsplash",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => launch(
+                                  'https://delegation-numerique-en-sante.github.io/covid19-algorithme-orientation/'),
+                              child: Text(
+                                "Pasteur Institute Algorithm Covid-19",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
@@ -145,9 +189,57 @@ class _InfoState extends State<Info> {
   }
 }
 
-void donate(int indexDonate, int indexShowseDonate) {
+void donate(int indexDonate, int indexShowseDonate) async {
   print('indexDonate $indexDonate');
   print('indexShowseDonate $indexShowseDonate');
+  double pymentVal = 0;
+  if (indexDonate > 0) {
+    switch (indexDonate) {
+      case 1:
+        pymentVal = 35;
+        break;
+      case 2:
+        pymentVal = 50;
+        break;
+      case 3:
+        pymentVal = 80;
+        break;
+      case 4:
+        pymentVal = 150;
+        break;
+      default:
+        pymentVal = 50;
+    }
+  } else if (indexDonate == 0) {
+    pymentVal = indexShowseDonate.toDouble();
+  }
+
+  print('pymentVal : $pymentVal');
+  /*await inApp.InAppPayments.setSquareApplicationId(
+      'sandbox-sq0idb-ywoH7LLxL-3kojolvbV2IQ');
+
+  await inApp.InAppPayments.startCardEntryFlow(
+    onCardEntryCancel: _cardEntryCancel,
+    onCardNonceRequestSuccess: _cardNonceRequestSuccess,
+  );*/
+}
+
+void _cardEntryCancel() {
+  //Cancelled card entry
+}
+void _cardNonceRequestSuccess(model.CardDetails card) {
+  print(card.nonce);
+  try {
+    inApp.InAppPayments.completeCardEntry(
+      onCardEntryComplete: _cardEntryComplete,
+    );
+  } on Exception catch (ex) {
+    inApp.InAppPayments.showCardNonceProcessingError(ex.toString());
+  }
+}
+
+void _cardEntryComplete() {
+  //Success
 }
 
 class ChooseWord extends StatefulWidget {
