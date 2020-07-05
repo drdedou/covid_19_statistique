@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 
-import 'package:covid_19_statistique/providers/symptoms_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+import '../providers/symptoms_data.dart';
 import '../models/symptoms_model.dart';
 import '../config/palette.dart';
 import '../config/styles.dart';
@@ -372,21 +372,6 @@ void nextstep(
           break;
       }
     }
-
-    print(
-        'counterMinorGravityFactor ${symptomsModel.counterMinorGravityFactor}');
-    print('prognosticFactors ${symptomsModel.prognosticFactors}');
-    print('majorGravityFactors ${symptomsModel.majorGravityFactors}');
-    print('isCough ${symptomsModel.isCough}');
-    print('isPains ${symptomsModel.isPains}');
-    print('isFever ${symptomsModel.isFever}');
-    print('isDiarrhea ${symptomsModel.isDiarrhea}');
-    print('isAnosmie ${symptomsModel.isAnosmie}');
-    print('weight ${symptomsModel.weight}');
-    print('length ${symptomsModel.length}');
-    print('age ${symptomsModel.age}');
-    ////////////// test
-    //symptoms.setMsgShow("msg_age>50");
 
     if (btn.pass) {
       symptoms.setIndex(isPass: true);
