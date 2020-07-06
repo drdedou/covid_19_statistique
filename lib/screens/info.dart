@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
-import 'package:square_in_app_payments/models.dart' as model;
-import 'package:square_in_app_payments/in_app_payments.dart' as inApp;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../localization/demo_localizations.dart';
@@ -15,6 +13,10 @@ class Info extends StatefulWidget {
 }
 
 class _InfoState extends State<Info> {
+  int pymentVal = 0;
+  int indexDonate = 2;
+  int indexShowseDonate = 50;
+
   void changeIndexDonate(int newVal) {
     setState(() {
       indexDonate = newVal;
@@ -27,8 +29,35 @@ class _InfoState extends State<Info> {
     });
   }
 
-  int indexDonate = 2;
-  int indexShowseDonate = 50;
+  void donate(int indexDonate, int indexShowseDonate) async {
+    print('indexDonate $indexDonate');
+    print('indexShowseDonate $indexShowseDonate');
+    pymentVal = 0;
+    if (indexDonate > 0) {
+      switch (indexDonate) {
+        case 1:
+          pymentVal = 35;
+          break;
+        case 2:
+          pymentVal = 50;
+          break;
+        case 3:
+          pymentVal = 80;
+          break;
+        case 4:
+          pymentVal = 150;
+          break;
+        default:
+          pymentVal = 50;
+      }
+    } else if (indexDonate == 0) {
+      pymentVal = indexShowseDonate;
+    }
+
+    print('pymentVal : $pymentVal');
+    //_initSquarePayment();
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -87,6 +116,18 @@ class _InfoState extends State<Info> {
                             ),
                             InkWell(
                               onTap: () => launch(
+                                  'https://documenter.getpostman.com/view/8854915/SzS8rjHv?version=latest'),
+                              child: Text(
+                                "COVID19 API in Postman",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => launch(
                                   'https://dribbble.com/shots/11015463-Covid-19-App-Free'),
                               child: Text(
                                 "App Design in dribbble.com",
@@ -113,7 +154,7 @@ class _InfoState extends State<Info> {
                               onTap: () => launch(
                                   'https://www.pexels.com/photo/silver-iphone-6-near-blue-and-silver-stethoscope-48603/'),
                               child: Text(
-                                "Pexels",
+                                "Photo in Pexels",
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.blue,
@@ -212,59 +253,6 @@ class _InfoState extends State<Info> {
       ),
     );
   }
-}
-
-void donate(int indexDonate, int indexShowseDonate) async {
-  print('indexDonate $indexDonate');
-  print('indexShowseDonate $indexShowseDonate');
-  double pymentVal = 0;
-  if (indexDonate > 0) {
-    switch (indexDonate) {
-      case 1:
-        pymentVal = 35;
-        break;
-      case 2:
-        pymentVal = 50;
-        break;
-      case 3:
-        pymentVal = 80;
-        break;
-      case 4:
-        pymentVal = 150;
-        break;
-      default:
-        pymentVal = 50;
-    }
-  } else if (indexDonate == 0) {
-    pymentVal = indexShowseDonate.toDouble();
-  }
-
-  print('pymentVal : $pymentVal');
-  await inApp.InAppPayments.setSquareApplicationId(
-      'sandbox-sq0idb-ywoH7LLxL-3kojolvbV2IQ');
-
-  await inApp.InAppPayments.startCardEntryFlow(
-    onCardEntryCancel: _cardEntryCancel,
-    onCardNonceRequestSuccess: _cardNonceRequestSuccess,
-  );
-}
-
-void _cardEntryCancel() {
-  //Cancelled card entry
-}
-void _cardNonceRequestSuccess(model.CardDetails card) {
-  print(' --------------------------------------------------${card.nonce}');
-  try {
-    inApp.InAppPayments.completeCardEntry(
-      onCardEntryComplete: _cardEntryComplete,
-    );
-  } on Exception catch (ex) {
-    inApp.InAppPayments.showCardNonceProcessingError(ex.toString());
-  }
-}
-
-void _cardEntryComplete() {
-  //Success
 }
 
 class ChooseWord extends StatefulWidget {
