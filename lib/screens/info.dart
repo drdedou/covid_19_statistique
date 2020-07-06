@@ -86,9 +86,34 @@ class _InfoState extends State<Info> {
                               textAlign: TextAlign.center,
                             ),
                             InkWell(
-                              onTap: () => launch('https://unsplash.com/'),
+                              onTap: () => launch(
+                                  'https://dribbble.com/shots/11015463-Covid-19-App-Free'),
                               child: Text(
-                                "Unsplash",
+                                "App Design in dribbble.com",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => launch(
+                                  'https://github.com/MarcusNg/flutter_covid_dashboard_ui'),
+                              child: Text(
+                                "App Design Source Code in github.com",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => launch(
+                                  'https://www.pexels.com/photo/silver-iphone-6-near-blue-and-silver-stethoscope-48603/'),
+                              child: Text(
+                                "Pexels",
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.blue,
@@ -215,20 +240,20 @@ void donate(int indexDonate, int indexShowseDonate) async {
   }
 
   print('pymentVal : $pymentVal');
-  /*await inApp.InAppPayments.setSquareApplicationId(
+  await inApp.InAppPayments.setSquareApplicationId(
       'sandbox-sq0idb-ywoH7LLxL-3kojolvbV2IQ');
 
   await inApp.InAppPayments.startCardEntryFlow(
     onCardEntryCancel: _cardEntryCancel,
     onCardNonceRequestSuccess: _cardNonceRequestSuccess,
-  );*/
+  );
 }
 
 void _cardEntryCancel() {
   //Cancelled card entry
 }
 void _cardNonceRequestSuccess(model.CardDetails card) {
-  print(card.nonce);
+  print(' --------------------------------------------------${card.nonce}');
   try {
     inApp.InAppPayments.completeCardEntry(
       onCardEntryComplete: _cardEntryComplete,
@@ -259,7 +284,14 @@ class ChooseWord extends StatefulWidget {
 
 class _ChooseWordState extends State<ChooseWord> {
   final int maxInt = 4294967296;
-  List<String> data = ['', '35€', '50€', '80€', '150€'];
+  List<String> data = ['', '\$35', '\$50', '\$80', '\$150'];
+  List<Color> colors = [
+    Colors.blue,
+    Colors.blue.shade500,
+    Colors.blue.shade600,
+    Colors.blue.shade700,
+    Colors.blue.shade800,
+  ];
 
   Widget _buildListItem(BuildContext context, int index) {
     return data[index].isEmpty
@@ -284,7 +316,7 @@ class _ChooseWordState extends State<ChooseWord> {
           )
         : Container(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: colors[index],
               borderRadius: BorderRadius.circular(100),
             ),
             height: 40,
