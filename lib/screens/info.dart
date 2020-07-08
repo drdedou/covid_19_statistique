@@ -20,7 +20,7 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   int pymentVal = 0;
   int indexDonate = 2;
-  int indexShowseDonate = 50;
+  int indexShowseDonate = 45;
 
   Future<void> _initSquarePayment() async {
     await InAppPayments.setSquareApplicationId('sq0idp-eZ9KyiQPWliKNqBphfcVtg');
@@ -363,9 +363,9 @@ class _ChooseWordState extends State<ChooseWord> {
             width: 90,
             child: NumberPicker.integer(
               initialValue: widget.indexShowseDonate,
-              minValue: 10,
+              minValue: 5,
               maxValue: maxInt,
-              step: 20,
+              step: 10,
               onChanged: widget.changeindexShowseDonate,
               decoration: BoxDecoration(
                   //color: Colors.black,
