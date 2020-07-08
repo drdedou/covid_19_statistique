@@ -211,6 +211,18 @@ class _InfoState extends State<Info> {
                             ),
                             InkWell(
                               onTap: () => launch(
+                                  'https://icons8.com/icons/set/coronavirus'),
+                              child: Text(
+                                "App Icon in icons8.com",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () => launch(
                                   'https://www.pexels.com/photo/silver-iphone-6-near-blue-and-silver-stethoscope-48603/'),
                               child: Text(
                                 "Photo in Pexels",
