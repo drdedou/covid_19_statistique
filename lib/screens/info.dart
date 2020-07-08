@@ -3,6 +3,11 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'package:square_in_app_payments/models.dart' as models;
+import 'package:square_in_app_payments/in_app_payments.dart';
+import 'package:built_collection/built_collection.dart';
+
+import '../models/payment.dart';
 import '../localization/demo_localizations.dart';
 import '../config/palette.dart';
 import '../widgets/custom_app_bar.dart';
@@ -17,6 +22,19 @@ class _InfoState extends State<Info> {
   int indexDonate = 2;
   int indexShowseDonate = 50;
 
+  Future<void> _initSquarePayment() async {
+    await InAppPayments.setSquareApplicationId('sq0idp-eZ9KyiQPWliKNqBphfcVtg');
+
+    // await InAppPayments.setSquareApplicationId(
+    //     'sandbox-sq0idb-ywoH7LLxL-3kojolvbV2IQ');
+  }
+
+  @override
+  void initState() {
+    _initSquarePayment();
+    super.initState();
+  }
+
   void changeIndexDonate(int newVal) {
     setState(() {
       indexDonate = newVal;
@@ -30,8 +48,6 @@ class _InfoState extends State<Info> {
   }
 
   void donate(int indexDonate, int indexShowseDonate) async {
-    print('indexDonate $indexDonate');
-    print('indexShowseDonate $indexShowseDonate');
     pymentVal = 0;
     if (indexDonate > 0) {
       switch (indexDonate) {
@@ -54,8 +70,51 @@ class _InfoState extends State<Info> {
       pymentVal = indexShowseDonate;
     }
 
-    print('pymentVal : $pymentVal');
-    //_initSquarePayment();
+    _onStartCardEntryFlowWithBuyerVerification();
+  }
+
+  Future<void> _onStartCardEntryFlowWithBuyerVerification() async {
+    var money = models.Money((b) => b
+      ..amount = pymentVal
+      ..currencyCode = 'USD');
+
+    var contact = models.Contact((b) => b
+      ..givenName = "Madjidi"
+      ..familyName = "Idris"
+      ..addressLines =
+          new BuiltList<String>(["bousaada", "bousaada"]).toBuilder()
+      ..city = "M'Sila"
+      ..countryCode = "DZ"
+      ..email = "madjidi.idris.official@gmail.com"
+      ..phone = "675918496"
+      ..postalCode = "28001");
+
+    await InAppPayments.startCardEntryFlowWithBuyerVerification(
+      onBuyerVerificationSuccess: _onBuyerVerificationSuccess,
+      onBuyerVerificationFailure: _onBuyerVerificationFailure,
+      onCardEntryCancel: _onCancelCardEntryFlow,
+      buyerAction: "Charge",
+      money: money,
+      squareLocationId: 'L1EX3YQMW83DJ',
+      //squareLocationId: 'S0MQCS8XDFJZM',
+      contact: contact,
+      collectPostalCode: true,
+    );
+  }
+
+  void _onCancelCardEntryFlow() {
+    // handle the cancel callback
+  }
+
+  void _onBuyerVerificationSuccess(
+      models.BuyerVerificationDetails result) async {
+    final Payment payment = Payment();
+
+    await payment.setPayment(result, pymentVal);
+  }
+
+  void _onBuyerVerificationFailure(models.ErrorInfo errorInfo) async {
+    // handle the error
   }
 
   @override
