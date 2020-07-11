@@ -1,9 +1,11 @@
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 
+import '../models/featureConst.dart';
 import '../localization/demo_localizations.dart';
 import '../providers/covs.dart';
 import '../providers/covs_week.dart';
@@ -65,15 +67,25 @@ class _CovidBarChartState extends State<CovidBarChart> {
               borderRadius: BorderRadius.circular(30),
               color: Colors.grey.shade100,
             ),
-            child: NumberPicker.horizontal(
-              initialValue: indexWeeks,
-              minValue: 1,
-              maxValue: getNumberOfWeek(),
-              onChanged: (val) {
-                setState(() {
-                  indexWeeks = val;
-                });
-              },
+            child: DescribedFeatureOverlay(
+              barrierDismissible: false,
+              featureId: chooseWeek6,
+              tapTarget: const Icon(Icons.calendar_today),
+              backgroundColor: colorFeature[6],
+              contentLocation: ContentLocation.below,
+              title: const Text('Find the fastest route'),
+              description: const Text(
+                  'Get car, walking, cycling, or public transit directions to this place'),
+              child: NumberPicker.horizontal(
+                initialValue: indexWeeks,
+                minValue: 1,
+                maxValue: getNumberOfWeek(),
+                onChanged: (val) {
+                  setState(() {
+                    indexWeeks = val;
+                  });
+                },
+              ),
             ),
           ),
           FutureBuilder(

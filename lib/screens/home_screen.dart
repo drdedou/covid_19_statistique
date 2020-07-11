@@ -1,3 +1,5 @@
+import 'package:covid_19_statistique/models/featureConst.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -59,10 +61,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                CountryDropdown(
-                  onChanged: (val) {
-                    Provider.of<Flags>(context, listen: false).setCountry(val);
-                  },
+                DescribedFeatureOverlay(
+                  featureId: chooseCountry3,
+                  tapTarget: const Icon(Icons.flag),
+                  backgroundColor: colorFeature[3],
+                  contentLocation: ContentLocation.below,
+                  title: const Text('Find the fastest route'),
+                  description: const Text(
+                      'Get car, walking, cycling, or public transit directions to this place'),
+                  child: CountryDropdown(
+                    onChanged: (val) {
+                      Provider.of<Flags>(context, listen: false)
+                          .setCountry(val);
+                    },
+                  ),
                 ),
               ],
             ),
@@ -91,25 +103,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    FlatButton.icon(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 10.0,
-                        horizontal: 20.0,
+                    DescribedFeatureOverlay(
+                      featureId: testNow4,
+                      tapTarget: const Icon(Icons.assignment),
+                      backgroundColor: colorFeature[4],
+                      contentLocation: ContentLocation.below,
+                      title: const Text('Find the fastest route'),
+                      description: const Text(
+                          'Get car, walking, cycling, or public transit directions to this place'),
+                      child: FlatButton.icon(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 10.0,
+                          horizontal: 20.0,
+                        ),
+                        onPressed: () => widget.onPageChange(2),
+                        color: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        icon: const Icon(
+                          Icons.assignment,
+                          color: Colors.white,
+                        ),
+                        label: Text(
+                          lang('ask_btn'),
+                          style: Styles.buttonTextStyle,
+                        ),
+                        textColor: Colors.white,
                       ),
-                      onPressed: () => widget.onPageChange(2),
-                      color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      icon: const Icon(
-                        Icons.assignment,
-                        color: Colors.white,
-                      ),
-                      label: Text(
-                        lang('ask_btn'),
-                        style: Styles.buttonTextStyle,
-                      ),
-                      textColor: Colors.white,
                     ),
                   ],
                 ),

@@ -1,3 +1,5 @@
+import 'package:covid_19_statistique/models/featureConst.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +10,9 @@ import '../providers/covs_week.dart';
 
 class StatsGrid extends StatelessWidget {
   final Covs covsData;
+  final GlobalKey<EnsureVisibleState> ensureKeychartBar;
 
-  const StatsGrid({this.covsData});
+  const StatsGrid({this.covsData, this.ensureKeychartBar});
   @override
   Widget build(BuildContext context) {
     final lang = DemoLocalizations.of(context).getTraslat;
@@ -54,6 +57,7 @@ class StatsGrid extends StatelessWidget {
                   Colors.orange,
                   1,
                   context,
+                  ensureKeychartBar,
                 ),
                 _buildStatCard(
                   lang('deaths'),
@@ -61,6 +65,7 @@ class StatsGrid extends StatelessWidget {
                   Colors.red,
                   2,
                   context,
+                  ensureKeychartBar,
                 ),
               ],
             ),
@@ -75,6 +80,7 @@ class StatsGrid extends StatelessWidget {
                         Colors.green,
                         3,
                         context,
+                        ensureKeychartBar,
                       ),
                     ],
                   ),
@@ -88,6 +94,7 @@ class StatsGrid extends StatelessWidget {
                         Colors.green,
                         3,
                         context,
+                        ensureKeychartBar,
                       ),
                       _buildStatCard(
                         lang('active'),
@@ -95,6 +102,7 @@ class StatsGrid extends StatelessWidget {
                         Colors.lightBlue,
                         4,
                         context,
+                        ensureKeychartBar,
                       ),
                     ],
                   ),
@@ -104,44 +112,71 @@ class StatsGrid extends StatelessWidget {
     );
   }
 
-  Expanded _buildStatCard(String title, String count, MaterialColor color,
-      int status, BuildContext context) {
+  Expanded _buildStatCard(
+    String title,
+    String count,
+    MaterialColor color,
+    int status,
+    BuildContext context,
+    GlobalKey<EnsureVisibleState> ensureKeychartBar,
+  ) {
     return Expanded(
-      child: InkWell(
-        onTap: !covsData.getIscountry
-            ? null
-            : () {
-                Provider.of<CovsWeeks>(context, listen: false)
-                    .setStatus(status);
-              },
-        child: Container(
-          margin: const EdgeInsets.all(8.0),
-          padding: const EdgeInsets.all(10.0),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w600,
+      child: DescribedFeatureOverlay(
+        onComplete: () async {
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              ensureKeychartBar.currentState.ensureVisible(
+                duration: const Duration(
+                  milliseconds: 600,
                 ),
-              ),
-              Text(
-                count,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
+              );
+            },
+          );
+          return true;
+        },
+        featureId: confirmedClick5,
+        tapTarget: const Icon(Icons.check_box),
+        backgroundColor: colorFeature[5],
+        contentLocation: ContentLocation.below,
+        title: const Text('Find the fastest route'),
+        description: const Text(
+            'Get car, walking, cycling, or public transit directions to this place'),
+        child: InkWell(
+          onTap: !covsData.getIscountry
+              ? null
+              : () {
+                  Provider.of<CovsWeeks>(context, listen: false)
+                      .setStatus(status);
+                },
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
+                Text(
+                  count,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

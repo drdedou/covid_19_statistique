@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,8 @@ class StatsScreen extends StatefulWidget {
 
 class _StatsScreenState extends State<StatsScreen>
     with TickerProviderStateMixin {
+  GlobalKey<EnsureVisibleState> ensureKeychartBar;
+
   TabController _tabControllerIsCountry;
   TabController _tabControllerIsTotal;
   int weeksIndex = 1;
@@ -36,6 +39,8 @@ class _StatsScreenState extends State<StatsScreen>
 
   @override
   void initState() {
+    ensureKeychartBar = GlobalKey<EnsureVisibleState>();
+
     _tabControllerIsCountry = TabController(
         vsync: this,
         length: 2,
@@ -151,6 +156,7 @@ class _StatsScreenState extends State<StatsScreen>
                           sliver: SliverToBoxAdapter(
                             child: StatsGrid(
                               covsData: covsData,
+                              ensureKeychartBar: ensureKeychartBar,
                             ),
                           ),
                         ),
@@ -165,7 +171,10 @@ class _StatsScreenState extends State<StatsScreen>
                       SliverPadding(
                         padding: const EdgeInsets.only(top: 20.0),
                         sliver: SliverToBoxAdapter(
-                          child: CovidBarChart(),
+                          child: EnsureVisible(
+                            key: ensureKeychartBar,
+                            child: CovidBarChart(),
+                          ),
                         ),
                       ),
                   ],

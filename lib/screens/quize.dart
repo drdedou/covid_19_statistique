@@ -1,5 +1,7 @@
 import 'dart:math' as math;
 
+import 'package:covid_19_statistique/models/featureConst.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -17,6 +19,17 @@ class Quize extends StatelessWidget {
     final widthScreen = MediaQuery.of(context).size.width;
     final lang = DemoLocalizations.of(context).getTraslat;
     final symptomsModel = SymptomsModel();
+    GlobalKey<EnsureVisibleState> ensureKeyButton =
+        GlobalKey<EnsureVisibleState>();
+    // Future.delayed(
+    //     Duration(seconds: 1),
+    //     () async => WidgetsBinding.instance.addPostFrameCallback(
+    //           (_) async => await ensureKeyButton.currentState.ensureVisible(
+    //             duration: const Duration(
+    //               milliseconds: 600,
+    //             ),
+    //           ),
+    //         ));
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(),
@@ -42,7 +55,12 @@ class Quize extends StatelessWidget {
                         symptoms: symptoms,
                         symptomsModel: symptomsModel)
                     : !symptoms.getIsIGetIt
-                        ? introTestPastor(widthScreen, lang, symptoms)
+                        ? introTestPastor(
+                            widthScreen,
+                            lang,
+                            symptoms,
+                            ensureKeyButton,
+                          )
                         : QuizStart(
                             symptomsData: listsymptomsData[symptoms.getIndex],
                             widthScreen: widthScreen,
@@ -60,7 +78,11 @@ class Quize extends StatelessWidget {
   }
 
   Column introTestPastor(
-      double widthScreen, String lang(String key), Symptoms symptoms) {
+    double widthScreen,
+    String lang(String key),
+    Symptoms symptoms,
+    GlobalKey<EnsureVisibleState> ensureKeyButton,
+  ) {
     return Column(
       children: [
         Stack(
@@ -106,30 +128,59 @@ class Quize extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 50),
-          child: FlatButton.icon(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 20.0,
-            ),
-            onPressed: () {
-              symptoms.setIsGetIt = true;
-            },
-            color: Colors.green,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            icon: const Icon(
-              Icons.done,
-              color: Colors.white,
-            ),
-            label: Text(
-              lang('i_get_it'),
-              style: Styles.buttonTextStyle,
-            ),
-            textColor: Colors.white,
-          ),
+        StatefulBuilder(
+          builder:
+              (BuildContext context, void Function(void Function()) setState) {
+            Future.delayed(
+                Duration(seconds: 0),
+                () async => WidgetsBinding.instance.addPostFrameCallback(
+                      (_) async =>
+                          await ensureKeyButton.currentState.ensureVisible(
+                        duration: const Duration(
+                          milliseconds: 600,
+                        ),
+                      ),
+                    ));
+            return DescribedFeatureOverlay(
+              barrierDismissible: false,
+              overflowMode: OverflowMode.wrapBackground,
+              featureId: iGetIt7,
+              tapTarget: const Icon(Icons.done),
+              backgroundColor: colorFeature[7],
+              contentLocation: ContentLocation.below,
+              title: const Text('Find the fastest route'),
+              description: const Text(
+                  'Get car, walking, cycling, or public transit directions to this place'),
+              child: EnsureVisible(
+                key: ensureKeyButton,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 100.0),
+                  child: FlatButton.icon(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 20.0,
+                    ),
+                    onPressed: () {
+                      symptoms.setIsGetIt = true;
+                    },
+                    color: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    icon: const Icon(
+                      Icons.done,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                      lang('i_get_it'),
+                      style: Styles.buttonTextStyle,
+                    ),
+                    textColor: Colors.white,
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ],
     );

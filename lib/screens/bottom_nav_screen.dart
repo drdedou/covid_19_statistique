@@ -1,9 +1,11 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 
 import '../localization/demo_localizations.dart';
 import '../screens/info.dart';
 import '../screens/quize.dart';
+import '../models/featureConst.dart';
 
 import './home_screen.dart';
 import './stats_screen.dart';
@@ -14,6 +16,25 @@ class BottomNavScreen extends StatefulWidget {
 }
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      FeatureDiscovery.discoverFeatures(
+        context,
+        const <String>{
+          gps1,
+          language2,
+          chooseCountry3,
+          testNow4,
+          confirmedClick5,
+          chooseWeek6,
+          iGetIt7
+        },
+      );
+    });
+    super.initState();
+  }
+
   final List _screens = [
     HomeScreen(),
     StatsScreen(),

@@ -1,9 +1,11 @@
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 
+import '../models/featureConst.dart';
 import '../localization/demo_localizations.dart';
 import '../localization/flags.dart';
 import '../config/palette.dart';
@@ -66,12 +68,21 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       backgroundColor: Palette.primaryColor,
       elevation: 0.0,
-      leading: IconButton(
-        icon: const Icon(Icons.gps_fixed),
-        iconSize: 26.0,
-        onPressed: () async {
-          await getLocation(context);
-        },
+      leading: DescribedFeatureOverlay(
+        featureId: gps1,
+        tapTarget: const Icon(Icons.gps_fixed),
+        backgroundColor: colorFeature[1],
+        contentLocation: ContentLocation.below,
+        title: const Text('Find the fastest route'),
+        description: const Text(
+            'Get car, walking, cycling, or public transit directions to this place'),
+        child: IconButton(
+          icon: const Icon(Icons.gps_fixed),
+          iconSize: 26.0,
+          onPressed: () async {
+            await getLocation(context);
+          },
+        ),
       ),
       title: Text(
         lang('title'),
@@ -79,7 +90,16 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: <Widget>[
         FlatButton(
-          child: DropDownMenu(),
+          child: DescribedFeatureOverlay(
+            featureId: language2,
+            tapTarget: const Icon(Icons.language),
+            backgroundColor: colorFeature[2],
+            contentLocation: ContentLocation.below,
+            title: const Text('Find the fastest route'),
+            description: const Text(
+                'Get car, walking, cycling, or public transit directions to this place'),
+            child: DropDownMenu(),
+          ),
           onPressed: () {},
         ),
       ],

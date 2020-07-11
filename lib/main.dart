@@ -1,4 +1,6 @@
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +14,7 @@ import './providers/language.dart';
 import './localization/flags.dart';
 
 void main() {
+  timeDilation = 1.0;
   runApp(MyApp());
 }
 
@@ -97,7 +100,10 @@ class _MyAppState extends State<MyApp> {
             value: Symptoms(),
           ),
         ],
-        child: BottomNavScreen(),
+        child: FeatureDiscovery(
+          recordStepsInSharedPreferences: false,
+          child: BottomNavScreen(),
+        ),
       ),
     );
   }

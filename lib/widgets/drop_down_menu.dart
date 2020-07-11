@@ -22,7 +22,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
     return DropdownButton<String>(
       value: dropdownValue,
       dropdownColor: Palette.primaryColor,
-      icon: Icon(
+      icon: const Icon(
         Icons.language,
         color: Colors.white,
       ),
