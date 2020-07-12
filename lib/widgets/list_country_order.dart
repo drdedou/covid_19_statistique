@@ -335,7 +335,7 @@ class _ChooseWordState extends State<ChooseWord> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: ScrollSnapList(
-          initialIndex: widget.stateSeach.toDouble(),
+          initialIndex: 1.0,
           onItemFocus: widget.changeState,
           itemSize: 120,
           itemBuilder: _buildListItem,

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+//TODO: fix error global double click
 class Summary {
   Global global;
   List<Countries> countries;

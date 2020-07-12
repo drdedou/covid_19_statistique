@@ -155,7 +155,6 @@ class CovsWeeks with ChangeNotifier {
       DateTime beforeweek = now.subtract(Duration(days: 8));
       final url =
           "https://api.covid19api.com/total/country/$countryName?from=${beforeweek.toIso8601String()}Z&to=${now.toIso8601String()}Z";
-      //"https://api.covid19api.com/total/country/algeria?from=2020-06-24T00:00:00.000Z&to=2020-06-28T00:00:00.000Z";
       //print(url);
       final response = await http.get(url);
       final extractResponse = json.decode(response.body) as List<dynamic>;
