@@ -120,6 +120,7 @@ class StatsGrid extends StatelessWidget {
     BuildContext context,
     GlobalKey<EnsureVisibleState> ensureKeychartBar,
   ) {
+    final lang = DemoLocalizations.of(context).getTraslat;
     return Expanded(
       child: DescribedFeatureOverlay(
         onComplete: () async {
@@ -138,9 +139,7 @@ class StatsGrid extends StatelessWidget {
         tapTarget: const Icon(Icons.check_box),
         backgroundColor: colorFeature[5],
         contentLocation: ContentLocation.below,
-        title: const Text('Find the fastest route'),
-        description: const Text(
-            'Get car, walking, cycling, or public transit directions to this place'),
+        title: Text(lang("intro_confirmedClick5")),
         child: InkWell(
           onTap: !covsData.getIscountry
               ? null

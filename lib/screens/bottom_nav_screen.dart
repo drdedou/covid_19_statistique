@@ -16,6 +16,10 @@ class BottomNavScreen extends StatefulWidget {
 }
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
+  void changePage(int index) {
+    setState(() => _currentIndex = index);
+  }
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -28,23 +32,34 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           testNow4,
           confirmedClick5,
           chooseWeek6,
-          iGetIt7
+          global7,
+          iGetIt8,
+          donate9
         },
       );
     });
     super.initState();
   }
 
-  final List _screens = [
-    HomeScreen(),
-    StatsScreen(),
-    Quize(),
-    Info(),
-  ];
   int _currentIndex = 0;
 
-  void changePage(int index) {
-    setState(() => _currentIndex = index);
+  getPagebyIndex(int index) {
+    switch (index) {
+      case 0:
+        return HomeScreen(onPageChange: changePage);
+        break;
+      case 1:
+        return StatsScreen(onPageChange: changePage);
+        break;
+      case 2:
+        return Quize(onPageChange: changePage);
+        break;
+      case 3:
+        return Info(onPageChange: changePage);
+        break;
+      default:
+        return HomeScreen(onPageChange: changePage);
+    }
   }
 
   @override
@@ -58,11 +73,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             textAlign: TextAlign.center,
           ),
         ),
-        child: _currentIndex == 0
-            ? HomeScreen(
-                onPageChange: changePage,
-              )
-            : _screens[_currentIndex],
+        child: getPagebyIndex(_currentIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

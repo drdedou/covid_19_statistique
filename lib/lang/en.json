@@ -151,5 +151,14 @@
     "msg_good": "Your position may not fall under Covid-19. Please feel free to contact your doctor if in doubt. You can repeat the test if there is a new offer to reevaluate the position. For all information related to Covid-19, contact the private medicine department of your country",
     "donate": "Donate",
     "donate_for": "Donate to support development and research",
-    "credits": "Credits"
+    "credits": "Credits",
+    "intro_gps1": "Automatically select your country",
+    "intro_language2": "Switch language",
+    "intro_chooseCountry3": "Select the country whose statistics you want to see",
+    "intro_testNow4": "Test now to get health advice",
+    "intro_confirmedClick5": "Choose the states you want to see - confirmed - death - active - recovered ",
+    "intro_chooseWeek6": "Choose the week whose cases you want to see",
+    "intro_global7": "Choose the order of cases you want",
+    "intro_iGetIt8": "Test now to get health advice",
+    "intro_donate9": "Donate to support development and research"
 }

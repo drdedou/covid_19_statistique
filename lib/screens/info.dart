@@ -1,3 +1,5 @@
+import 'package:covid_19_statistique/models/featureConst.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:scroll_snap_list/scroll_snap_list.dart';
@@ -13,11 +15,15 @@ import '../config/palette.dart';
 import '../widgets/custom_app_bar.dart';
 
 class Info extends StatefulWidget {
+  final Function onPageChange;
+
+  const Info({this.onPageChange});
   @override
   _InfoState createState() => _InfoState();
 }
 
 class _InfoState extends State<Info> {
+  GlobalKey<EnsureVisibleState> ensureKeyDonate;
   int pymentVal = 0;
   int indexDonate = 2;
   int indexShowseDonate = 45;
@@ -32,6 +38,7 @@ class _InfoState extends State<Info> {
   @override
   void initState() {
     _initSquarePayment();
+    ensureKeyDonate = GlobalKey<EnsureVisibleState>();
     super.initState();
   }
 
@@ -250,68 +257,94 @@ class _InfoState extends State<Info> {
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 5,
-                    child: Container(
-                      width: width - 20,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              lang("donate"),
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              lang("donate_for"),
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey.shade800,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: ChooseWord(
-                                changeIndexDonate: changeIndexDonate,
-                                changeindexShowseDonate:
-                                    changeindexShowseDonate,
-                                indexDonate: indexDonate,
-                                indexShowseDonate: indexShowseDonate,
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 8.0, bottom: 50),
-                              child: FlatButton.icon(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 10.0,
-                                  horizontal: 20.0,
-                                ),
-                                onPressed: () {
-                                  donate(indexDonate, indexShowseDonate);
-                                },
-                                color: Colors.green,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                icon: const Icon(
-                                  Icons.payment,
-                                  color: Colors.white,
-                                ),
-                                label: Text(
-                                  lang('donate'),
+                  DescribedFeatureOverlay(
+                    barrierDismissible: false,
+                    overflowMode: OverflowMode.wrapBackground,
+                    featureId: donate9,
+                    tapTarget: const Icon(Icons.check_box),
+                    backgroundColor: colorFeature[9],
+                    contentLocation: ContentLocation.below,
+                    onOpen: () async {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        ensureKeyDonate.currentState.ensureVisible(
+                            duration: const Duration(milliseconds: 600));
+                      });
+                      return true;
+                    },
+                    onComplete: () async {
+                      Future.delayed(Duration(milliseconds: 500),
+                          () => widget.onPageChange(0));
+                      return true;
+                    },
+                    title: Text(lang("intro_donate9")),
+                    child: EnsureVisible(
+                      key: ensureKeyDonate,
+                      child: Card(
+                        elevation: 5,
+                        child: Container(
+                          width: width - 20,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  lang("donate"),
                                   style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w600,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Text(
+                                  lang("donate_for"),
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.grey.shade800,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 20),
+                                  child: ChooseWord(
+                                    changeIndexDonate: changeIndexDonate,
+                                    changeindexShowseDonate:
+                                        changeindexShowseDonate,
+                                    indexDonate: indexDonate,
+                                    indexShowseDonate: indexShowseDonate,
                                   ),
                                 ),
-                                textColor: Colors.white,
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, bottom: 50),
+                                  child: FlatButton.icon(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 10.0,
+                                      horizontal: 20.0,
+                                    ),
+                                    onPressed: () {
+                                      donate(indexDonate, indexShowseDonate);
+                                    },
+                                    color: Colors.green,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    icon: const Icon(
+                                      Icons.payment,
+                                      color: Colors.white,
+                                    ),
+                                    label: Text(
+                                      lang('donate'),
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    textColor: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
                     ),

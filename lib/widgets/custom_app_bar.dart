@@ -73,9 +73,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         tapTarget: const Icon(Icons.gps_fixed),
         backgroundColor: colorFeature[1],
         contentLocation: ContentLocation.below,
-        title: const Text('Find the fastest route'),
-        description: const Text(
-            'Get car, walking, cycling, or public transit directions to this place'),
+        title: Text(lang("intro_gps1")),
         child: IconButton(
           icon: const Icon(Icons.gps_fixed),
           iconSize: 26.0,
@@ -95,9 +93,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             tapTarget: const Icon(Icons.language),
             backgroundColor: colorFeature[2],
             contentLocation: ContentLocation.below,
-            title: const Text('Find the fastest route'),
-            description: const Text(
-                'Get car, walking, cycling, or public transit directions to this place'),
+            title: Text(lang("intro_language2")),
             child: DropDownMenu(),
           ),
           onPressed: () {},

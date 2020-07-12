@@ -14,6 +14,9 @@ import '../localization/demo_localizations.dart';
 import '../widgets/custom_app_bar.dart';
 
 class Quize extends StatelessWidget {
+  final Function onPageChange;
+
+  const Quize({this.onPageChange});
   @override
   Widget build(BuildContext context) {
     final widthScreen = MediaQuery.of(context).size.width;
@@ -21,15 +24,7 @@ class Quize extends StatelessWidget {
     final symptomsModel = SymptomsModel();
     GlobalKey<EnsureVisibleState> ensureKeyButton =
         GlobalKey<EnsureVisibleState>();
-    // Future.delayed(
-    //     Duration(seconds: 1),
-    //     () async => WidgetsBinding.instance.addPostFrameCallback(
-    //           (_) async => await ensureKeyButton.currentState.ensureVisible(
-    //             duration: const Duration(
-    //               milliseconds: 600,
-    //             ),
-    //           ),
-    //         ));
+
     return Scaffold(
       backgroundColor: Palette.primaryColor,
       appBar: CustomAppBar(),
@@ -144,13 +139,16 @@ class Quize extends StatelessWidget {
             return DescribedFeatureOverlay(
               barrierDismissible: false,
               overflowMode: OverflowMode.wrapBackground,
-              featureId: iGetIt7,
+              featureId: iGetIt8,
               tapTarget: const Icon(Icons.done),
-              backgroundColor: colorFeature[7],
+              backgroundColor: colorFeature[8],
               contentLocation: ContentLocation.below,
-              title: const Text('Find the fastest route'),
-              description: const Text(
-                  'Get car, walking, cycling, or public transit directions to this place'),
+              onComplete: () async {
+                Future.delayed(
+                    Duration(milliseconds: 500), () => onPageChange(3));
+                return true;
+              },
+              title: Text(lang("intro_iGetIt8")),
               child: EnsureVisible(
                 key: ensureKeyButton,
                 child: Padding(

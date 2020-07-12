@@ -66,9 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   tapTarget: const Icon(Icons.flag),
                   backgroundColor: colorFeature[3],
                   contentLocation: ContentLocation.below,
-                  title: const Text('Find the fastest route'),
-                  description: const Text(
-                      'Get car, walking, cycling, or public transit directions to this place'),
+                  title: Text(lang("intro_chooseCountry3")),
                   child: CountryDropdown(
                     onChanged: (val) {
                       Provider.of<Flags>(context, listen: false)
@@ -104,13 +102,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     DescribedFeatureOverlay(
+                      barrierDismissible: false,
                       featureId: testNow4,
                       tapTarget: const Icon(Icons.assignment),
                       backgroundColor: colorFeature[4],
                       contentLocation: ContentLocation.below,
-                      title: const Text('Find the fastest route'),
-                      description: const Text(
-                          'Get car, walking, cycling, or public transit directions to this place'),
+                      title: Text(lang("intro_testNow4")),
+                      onComplete: () async {
+                        Future.delayed(Duration(milliseconds: 500),
+                            () => widget.onPageChange(1));
+                        return true;
+                      },
+                      overflowMode: OverflowMode.clipContent,
                       child: FlatButton.icon(
                         padding: const EdgeInsets.symmetric(
                           vertical: 10.0,

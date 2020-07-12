@@ -12,6 +12,9 @@ import '../providers/covs_week.dart';
 import '../config/styles.dart';
 
 class CovidBarChart extends StatefulWidget {
+  final Function onPageChange;
+
+  const CovidBarChart({this.onPageChange});
   @override
   _CovidBarChartState createState() => _CovidBarChartState();
 }
@@ -36,6 +39,7 @@ class _CovidBarChartState extends State<CovidBarChart> {
   @override
   Widget build(BuildContext context) {
     final covsWeeks = Provider.of<CovsWeeks>(context);
+    final covs = Provider.of<Covs>(context, listen: false);
     final lang = DemoLocalizations.of(context).getTraslat;
     return Container(
       padding: EdgeInsets.only(bottom: 20),
@@ -73,9 +77,18 @@ class _CovidBarChartState extends State<CovidBarChart> {
               tapTarget: const Icon(Icons.calendar_today),
               backgroundColor: colorFeature[6],
               contentLocation: ContentLocation.below,
-              title: const Text('Find the fastest route'),
-              description: const Text(
-                  'Get car, walking, cycling, or public transit directions to this place'),
+              onComplete: () async {
+                Future.delayed(
+                  Duration(milliseconds: 500),
+                  () {
+                    covs.setIsCountry(1);
+                    widget.onPageChange(1);
+                  },
+                );
+
+                return true;
+              },
+              title: Text(lang("intro_chooseWeek6")),
               child: NumberPicker.horizontal(
                 initialValue: indexWeeks,
                 minValue: 1,

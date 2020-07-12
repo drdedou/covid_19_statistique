@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:provider/provider.dart';
 
+import '../models/featureConst.dart';
 import '../widgets/list_country_order.dart';
 import '../localization/demo_localizations.dart';
 import '../localization/flags.dart';
@@ -14,6 +15,9 @@ import '../config/styles.dart';
 import '../widgets/widgets.dart';
 
 class StatsScreen extends StatefulWidget {
+  final Function onPageChange;
+
+  const StatsScreen({this.onPageChange});
   @override
   _StatsScreenState createState() => _StatsScreenState();
 }
@@ -21,6 +25,7 @@ class StatsScreen extends StatefulWidget {
 class _StatsScreenState extends State<StatsScreen>
     with TickerProviderStateMixin {
   GlobalKey<EnsureVisibleState> ensureKeychartBar;
+  GlobalKey<EnsureVisibleState> ensureKeyGlobal;
 
   TabController _tabControllerIsCountry;
   TabController _tabControllerIsTotal;
@@ -40,6 +45,7 @@ class _StatsScreenState extends State<StatsScreen>
   @override
   void initState() {
     ensureKeychartBar = GlobalKey<EnsureVisibleState>();
+    ensureKeyGlobal = GlobalKey<EnsureVisibleState>();
 
     _tabControllerIsCountry = TabController(
         vsync: this,
@@ -164,7 +170,31 @@ class _StatsScreenState extends State<StatsScreen>
                       SliverPadding(
                         padding: const EdgeInsets.only(top: 20.0),
                         sliver: SliverToBoxAdapter(
-                          child: ListCountryOrder(),
+                          child: DescribedFeatureOverlay(
+                            featureId: global7,
+                            barrierDismissible: false,
+                            tapTarget: const Icon(Icons.check_box),
+                            backgroundColor: colorFeature[7],
+                            onComplete: () async {
+                              Future.delayed(Duration(milliseconds: 500),
+                                  () => widget.onPageChange(2));
+                              return true;
+                            },
+                            title: Text(
+                              lang("intro_global7"),
+                            ),
+                            onOpen: () async {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                ensureKeyGlobal.currentState.ensureVisible(
+                                    duration:
+                                        const Duration(milliseconds: 600));
+                              });
+                              return true;
+                            },
+                            child: EnsureVisible(
+                                key: ensureKeyGlobal,
+                                child: ListCountryOrder()),
+                          ),
                         ),
                       ),
                     if (isLoaded && covsData.getIscountry && isNotEmptyCountry)
@@ -173,7 +203,8 @@ class _StatsScreenState extends State<StatsScreen>
                         sliver: SliverToBoxAdapter(
                           child: EnsureVisible(
                             key: ensureKeychartBar,
-                            child: CovidBarChart(),
+                            child: CovidBarChart(
+                                onPageChange: widget.onPageChange),
                           ),
                         ),
                       ),
