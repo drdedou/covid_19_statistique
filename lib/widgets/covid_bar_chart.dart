@@ -82,7 +82,6 @@ class _CovidBarChartState extends State<CovidBarChart> {
                   Duration(milliseconds: 500),
                   () {
                     covs.setIsCountry(1);
-                    widget.onPageChange(1);
                   },
                 );
 

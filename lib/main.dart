@@ -70,17 +70,6 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      localeResolutionCallback: (deviceLocal, suppoetLocal) {
-        if (index == -1) {
-          if ('ar' == deviceLocal.languageCode) {
-            index = 0;
-          }
-        }
-        if (index == 0) {
-          return suppoetLocal.last;
-        }
-        return suppoetLocal.first;
-      },
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider.value(
@@ -103,7 +92,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ],
         child: FeatureDiscovery(
-          recordStepsInSharedPreferences: false,
+          recordStepsInSharedPreferences: true,
           child: BottomNavScreen(),
         ),
       ),

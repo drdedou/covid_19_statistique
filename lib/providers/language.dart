@@ -1,3 +1,4 @@
+import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -52,6 +53,18 @@ Future<Locale> getInitLang() async {
         _temp = Locale(language, 'US');
     }
     Language.lang = _prefs.getString('lang');
+  } else {
+    String locale = await Devicelocale.currentLocale;
+    if (locale.contains("ar")) {
+      _temp = Locale('ar', 'DZ');
+      Language.lang = 'AR';
+    } else if (locale.contains("en")) {
+      _temp = Locale('en', 'US');
+      Language.lang = 'EN';
+    } else {
+      _temp = Locale('en', 'US');
+      Language.lang = 'EN';
+    }
   }
 
   return _temp;
