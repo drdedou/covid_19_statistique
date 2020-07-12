@@ -73,7 +73,10 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             textAlign: TextAlign.center,
           ),
         ),
-        child: getPagebyIndex(_currentIndex),
+        child: AnimatedSwitcher(
+          duration: Duration(milliseconds: 500),
+          child: getPagebyIndex(_currentIndex),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

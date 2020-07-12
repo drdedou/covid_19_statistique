@@ -287,7 +287,7 @@ class QuizStart extends StatelessWidget {
     final lang = DemoLocalizations.of(context).getTraslat;
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
           padding: EdgeInsets.all(10),
@@ -300,32 +300,36 @@ class QuizStart extends StatelessWidget {
             unselectedColor: Colors.black12,
           ),
         ),
-        Container(
-          width: widthScreen - 20,
-          margin: const EdgeInsets.all(10),
-          child: Card(
-            elevation: 3,
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    lang(symptomsData.questionCode),
-                  ),
-                ),
-                if (symptomsData.subMsg.isNotEmpty)
-                  Card(
-                    margin: const EdgeInsets.all(10.0),
-                    elevation: 3,
-                    color: Colors.blueGrey.shade50,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        lang(symptomsData.subMsg),
-                      ),
+        AnimatedSwitcher(
+          duration: Duration(milliseconds: 400),
+          child: Container(
+            key: ValueKey(math.Random().nextInt(9999)),
+            width: widthScreen - 20,
+            margin: const EdgeInsets.all(10),
+            child: Card(
+              elevation: 3,
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      lang(symptomsData.questionCode),
                     ),
                   ),
-              ],
+                  if (symptomsData.subMsg.isNotEmpty)
+                    Card(
+                      margin: const EdgeInsets.all(10.0),
+                      elevation: 3,
+                      color: Colors.blueGrey.shade50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          lang(symptomsData.subMsg),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         ),
