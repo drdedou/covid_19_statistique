@@ -116,8 +116,19 @@ class CovsWeeks with ChangeNotifier {
           tempCases.add(_covsDatabyDay[i].confirmed.toDouble());
         }
     }
+
+    List<double> tempCasesDath = [];
+    for (var i = 0; i < _covsDatabyDay.length; i++) {
+      tempCasesDath.add(_covsDatabyDay[i].deaths.toDouble());
+    }
+
     final isNigative = tempCases.where((element) => element < 0);
+    final isNigativeDath = tempCasesDath.where((element) => element < 0);
+
     if (isNigative.isNotEmpty) {
+      return [];
+    }
+    if (isNigativeDath.isNotEmpty && status == Status.active) {
       return [];
     }
     tempCases.removeAt(0);
