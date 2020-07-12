@@ -29,6 +29,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int index = -1;
   Locale _locale;
   void setLocal(Locale temp) {
     setState(() {
@@ -69,13 +70,14 @@ class _MyAppState extends State<MyApp> {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      localeListResolutionCallback: (deviceLocal, suppoetLocal) {
-        for (var locale in suppoetLocal) {
-          for (var device in deviceLocal) {
-            if (locale.languageCode == device.languageCode) {
-              return device;
-            }
+      localeResolutionCallback: (deviceLocal, suppoetLocal) {
+        if (index == -1) {
+          if ('ar' == deviceLocal.languageCode) {
+            index = 0;
           }
+        }
+        if (index == 0) {
+          return suppoetLocal.last;
         }
         return suppoetLocal.first;
       },

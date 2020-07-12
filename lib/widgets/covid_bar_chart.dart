@@ -104,36 +104,52 @@ class _CovidBarChartState extends State<CovidBarChart> {
           FutureBuilder(
             future: covsWeeks.loadeCountry(maxIndexWeek - indexWeeks + 1),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
+              try {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Container(
+                    width: 200,
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+                final dataPiker = covsWeeks.getDataPicker;
+                final devided = covsWeeks.getDevided;
+
+                if (dataPiker.isNotEmpty) {
+                  return barChart(context, covsWeeks.covsDataByDay..removeAt(0),
+                      devided, (devided * 5).toDouble(), dataPiker);
+                }
+
                 return Container(
-                  width: 200,
-                  height: MediaQuery.of(context).size.height / 2,
-                  child: Center(
-                    child: CircularProgressIndicator(),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Text(
+                    lang('error_info'),
+                    style: TextStyle(
+                      fontSize: 21,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              } catch (e) {
+                return Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                  width: MediaQuery.of(context).size.width * 0.85,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: Text(
+                    lang('er_country'),
+                    style: TextStyle(
+                      fontSize: 21,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 );
               }
-              final dataPiker = covsWeeks.getDataPicker;
-              final devided = covsWeeks.getDevided;
-
-              if (dataPiker.isNotEmpty) {
-                return barChart(context, covsWeeks.covsDataByDay..removeAt(0),
-                    devided, (devided * 5).toDouble(), dataPiker);
-              }
-
-              return Container(
-                margin:
-                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                width: MediaQuery.of(context).size.width * 0.85,
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Text(
-                  lang('error_info'),
-                  style: TextStyle(
-                    fontSize: 21,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              );
             },
           ),
         ],

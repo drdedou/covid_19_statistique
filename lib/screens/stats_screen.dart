@@ -166,7 +166,7 @@ class _StatsScreenState extends State<StatsScreen>
                             ),
                           ),
                         ),
-                    if (isLoaded && !covsData.getIscountry)
+                    if (isLoaded && !covsData.getIscountry && isNotEmptyGlobal)
                       SliverPadding(
                         padding: const EdgeInsets.only(top: 20.0),
                         sliver: SliverToBoxAdapter(
