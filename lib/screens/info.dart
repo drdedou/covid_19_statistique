@@ -41,10 +41,19 @@ class _InfoState extends State<Info> {
                               textAlign: TextAlign.center,
                             ),
                             Text(
+                              "Madjidi Idris",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey.shade800,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
                               "madjidi.idris.official@gmail.com",
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.grey.shade800,
+                                color: Colors.grey.shade900,
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -58,23 +67,32 @@ class _InfoState extends State<Info> {
                     child: Container(
                       width: width - 20,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
                             Text(
-                              "Alpha Programming",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              "madjidi.idris.official@gmail.com",
+                              lang('thanks_discription'),
                               style: TextStyle(
                                 fontSize: 18,
-                                color: Colors.grey.shade800,
+                                color: Colors.grey.shade900,
                               ),
                               textAlign: TextAlign.center,
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/Univ.png',
+                                  height: 100,
+                                  width: 100,
+                                ),
+                                Image.asset(
+                                  'assets/images/MI.png',
+                                  height: 100,
+                                  width: 100,
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),

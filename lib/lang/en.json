@@ -149,8 +149,7 @@
     "msg_>1_prognosticFactors": "Your condition may fall under Covid-19. Seek medical advice or general practitioner. If in doubt, call the emergency in your country. While waiting and breaking chains, we recommend that you isolate yourself and respect barrier gestures to protect your loved ones.",
     "msg_<=0_prognosticFactors": "Your condition may fall under Covid-19. Remote consulting, general practitioner, or home visit (SOS doctors, etc.) Meanwhile and for breaking transmission chains, we advise you to isolate yourself and respect barrier gestures protecting your loved ones.",
     "msg_good": "Your position may not fall under Covid-19. Please feel free to contact your doctor if in doubt. You can repeat the test if there is a new offer to reevaluate the position. For all information related to Covid-19, contact the private medicine department of your country",
-    "donate": "Donate",
-    "donate_for": "Donate to support development and research",
+
     "credits": "Credits",
     "intro_gps1": "Automatically select your country",
     "intro_language2": "Switch language",
@@ -159,5 +158,8 @@
     "intro_confirmedClick5": "Choose the states you want to see - confirmed - death - active - recovered ",
     "intro_chooseWeek6": "Choose the week whose cases you want to see",
     "intro_global7": "Choose the order of cases you want",
-    "intro_iGetIt8": "Test now to get health advice"
+    "intro_iGetIt8": "Test now to get health advice",
+
+    "thanks_discription": "This project was carried out within the framework of mini projects. Mobile programming by student Madjidi Idris, under the supervision of Dr. Samir Akrouf, Faculty of Mathematics and Computer Science , M'sila University."
+
 }
