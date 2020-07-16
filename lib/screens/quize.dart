@@ -1,11 +1,13 @@
 import 'dart:math' as math;
 
-import 'package:covid_19_statistique/models/featureConst.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../localization/flags.dart';
+import '../models/featureConst.dart';
 import '../providers/symptoms_data.dart';
 import '../models/symptoms_model.dart';
 import '../config/palette.dart';
@@ -233,32 +235,90 @@ class ResultMsg extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 50),
-              child: FlatButton.icon(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10.0,
-                  horizontal: 20.0,
+            if (Flags.country != "DZ")
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 50),
+                child: FlatButton.icon(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 10.0,
+                    horizontal: 20.0,
+                  ),
+                  onPressed: () async {
+                    symptomsModel.restart();
+                    await symptoms.newStart();
+                  },
+                  color: Colors.green,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  icon: const Icon(
+                    Icons.done,
+                    color: Colors.white,
+                  ),
+                  label: Text(
+                    lang('i_get_it'),
+                    style: Styles.buttonTextStyle,
+                  ),
+                  textColor: Colors.white,
                 ),
-                onPressed: () async {
-                  symptomsModel.restart();
-                  await symptoms.newStart();
-                },
-                color: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                icon: const Icon(
-                  Icons.done,
-                  color: Colors.white,
-                ),
-                label: Text(
-                  lang('i_get_it'),
-                  style: Styles.buttonTextStyle,
-                ),
-                textColor: Colors.white,
               ),
-            ),
+            if (Flags.country == "DZ")
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 50),
+                    child: FlatButton.icon(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 20.0,
+                      ),
+                      onPressed: () async {
+                        symptomsModel.restart();
+                        await symptoms.newStart();
+                      },
+                      color: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      icon: const Icon(
+                        Icons.done,
+                        color: Colors.white,
+                      ),
+                      label: Text(
+                        lang('i_get_it'),
+                        style: Styles.buttonTextStyle,
+                      ),
+                      textColor: Colors.white,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 50),
+                    child: FlatButton.icon(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10.0,
+                        horizontal: 20.0,
+                      ),
+                      onPressed: () {
+                        launch("tel://3030");
+                      },
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      icon: const Icon(
+                        Icons.call,
+                        color: Colors.white,
+                      ),
+                      label: Text(
+                        lang('msg_call'),
+                        style: Styles.buttonTextStyle,
+                      ),
+                      textColor: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
       ),

@@ -138,6 +138,7 @@
     "msg_less_15": "This app is not intended for persons under 15 years of age. Contact your general practitioner if you have any doubts. In the event of an emergency, call the emergency in your country",
     "msg_header": "Advice regarding your situation",
     "msg_danger": "Call emergency services in your country",
+    "msg_call": "call",
     "msg_with_0_prognosticFactors": "Votre état peut tomber sous Covid-19. Cherchez un avis médical ou un médecin généraliste. Au moins doute, appelez l'urgence dans votre pays. En attendant, pour briser les chaînes de transmission, nous vous recommandons de vous isoler et de respecter les gestes barrières protégeant vos proches.",
     "msg_with_1_counterMinorGravityFactor": "Votre état peut tomber sous Covid-19. Cherchez un avis médical ou un médecin généraliste. Au moins doute, appelez l'urgence dans votre pays en attendant et pour briser les chaînes de transmission, nous vous conseillons de vous isoler et de respecter les gestes barrières protégeant vos proches.",
     "msg_with_>1_counterMinorGravityFactor": "Votre état peut tomber sous Covid-19. Demander une consultation à distance, un médecin généraliste ou une visite à domicile. Si vous ne pouvez pas obtenir de conseils, appelez le 911. En attendant, pour briser les chaînes de transmission, nous vous recommandons de vous isoler et de respecter les gestes barrières protégeant vos proches.",
