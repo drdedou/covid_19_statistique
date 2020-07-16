@@ -6,9 +6,6 @@ import '../config/palette.dart';
 import '../widgets/custom_app_bar.dart';
 
 class Info extends StatefulWidget {
-  final Function onPageChange;
-
-  const Info({this.onPageChange});
   @override
   _InfoState createState() => _InfoState();
 }
@@ -29,6 +26,33 @@ class _InfoState extends State<Info> {
             child: Container(
               child: Column(
                 children: [
+                  Card(
+                    elevation: 5,
+                    child: Container(
+                      width: width - 20,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Alpha Programming",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "madjidi.idris.official@gmail.com",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey.shade800,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   Card(
                     elevation: 5,
                     child: Container(

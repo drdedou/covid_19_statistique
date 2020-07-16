@@ -7,8 +7,7 @@ const String gps1 = 'gps',
     confirmedClick5 = 'confirmedClick5',
     chooseWeek6 = 'chooseWeek6',
     global7 = 'global7',
-    iGetIt8 = 'iGetIt8',
-    donate9 = 'donate9';
+    iGetIt8 = 'iGetIt8';
 
 const List<Color> colorFeature = [
   Colors.blue,
@@ -17,8 +16,7 @@ const List<Color> colorFeature = [
   Colors.grey,
   Colors.blue,
   Colors.indigo,
-  Colors.blueAccent,
+  Colors.blueGrey,
   Colors.red,
   Colors.green,
-  Colors.blueGrey,
 ];

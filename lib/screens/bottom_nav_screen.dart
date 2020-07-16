@@ -33,8 +33,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           confirmedClick5,
           chooseWeek6,
           global7,
-          iGetIt8,
-          donate9
+          iGetIt8
         },
       );
     });
@@ -55,7 +54,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
         return Quize(onPageChange: changePage);
         break;
       case 3:
-        return Info(onPageChange: changePage);
+        return Info();
         break;
       default:
         return HomeScreen(onPageChange: changePage);

@@ -145,7 +145,7 @@ class Quize extends StatelessWidget {
               contentLocation: ContentLocation.below,
               onComplete: () async {
                 Future.delayed(
-                    Duration(milliseconds: 500), () => onPageChange(3));
+                    Duration(milliseconds: 500), () => onPageChange(0));
                 return true;
               },
               title: Text(lang("intro_iGetIt8")),
