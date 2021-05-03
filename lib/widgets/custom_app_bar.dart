@@ -87,7 +87,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         textAlign: TextAlign.center,
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           child: DescribedFeatureOverlay(
             featureId: language2,
             tapTarget: const Icon(Icons.language),
