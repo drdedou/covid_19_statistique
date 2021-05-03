@@ -27,3 +27,7 @@ app flutter covid 19 statistique related with API https://documenter.getpostman.
 |             Statics              |             Statics              |
 | :------------------------------: | :------------------------------: |
 | ![](/screenShot/15.png?raw=true) | ![](/screenShot/16.png?raw=true) |
+
+## Pull Requests
+
+I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request.
