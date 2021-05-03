@@ -10,6 +10,8 @@ app flutter covid 19 statistique related with API https://documenter.getpostman.
 ([freelancer](https://www.freelancer.com/u/BetaProgramming)) 
 ([fiverr](https://www.fiverr.com/dr_idris)) 
 ([mostaql](https://mostaql.com/u/DR_dedou)) 
+([twitter](https://twitter.com/MadjidiIdris)) 
+([instagram](https://www.instagram.com/madjidi.idris.19/))
 
 
 ## Android Screenshots
