@@ -2,6 +2,15 @@
 
 app flutter covid 19 statistique related with API https://documenter.getpostman.com/view/10808728/SzS8rjbc
 
+# Madjidi Idris
+
+Facebook : https://www.facebook.com/profile.php?id=100034306711334
+linkedin : https://www.linkedin.com/in/madjidi-idris-814149209/
+upwork : https://www.upwork.com/freelancers/~0146bdcb2e72b93106
+freelancer : https://www.freelancer.com/u/BetaProgramming
+fiverr : https://www.fiverr.com/dr_idris
+mostaql : https://mostaql.com/u/DR_dedou
+
 ## Android Screenshots
 
 |            Intro App            |            Intro App            |            Intro App            |
