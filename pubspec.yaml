@@ -23,24 +23,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  bubble_tab_indicator: ^0.1.4
-  fl_chart: ^0.12.0
-  intl: ^0.16.1
-  provider: ^4.3.2
-  shared_preferences: ^0.5.12
-  geolocator: ^6.1.1
-  location: ^3.0.2
-  http: ^0.12.2
-  fluttertoast: ^7.1.1
-  numberpicker: ^1.2.1
+  bubble_tab_indicator: ^0.1.6
+  fl_chart: ^0.36.0
+  intl: ^0.17.0
+  provider: ^5.0.0
+  shared_preferences: ^2.0.5
+  geolocator: 6.1.1
+  location: ^4.1.1
+  http: ^0.13.3
+  fluttertoast: ^8.0.6
+  numberpicker: ^2.1.1
   floating_search_bar: ^0.3.0
-  step_progress_indicator: ^0.2.4+7
-  double_back_to_close_app: ^1.2.0
-  scroll_snap_list: ^0.5.1
-  url_launcher: ^5.7.8
-  built_collection: ^4.3.2
-  feature_discovery: ^0.12.1
-  devicelocale: ^0.3.3
+  step_progress_indicator: ^0.2.5+8
+  double_back_to_close_app: ^2.0.1
+  scroll_snap_list: ^0.8.0
+  url_launcher: ^6.0.3
+  built_collection: ^5.0.0
+  feature_discovery: ^0.14.0
+  devicelocale: ^0.4.1
+  
   flutter_localizations:
     sdk: flutter
 

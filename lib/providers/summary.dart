@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-//TODO: fix error global double click
 class Summary {
   Global global;
   List<Countries> countries;
@@ -140,7 +139,7 @@ class CovsSummary with ChangeNotifier {
   Future<void> loadeSummary() async {
     try {
       final url = "https://api.covid19api.com/summary";
-      final response = await http.get(url);
+      final response = await http.get(Uri.parse(url));
 
       final extractResponse =
           json.decode(response.body) as Map<String, dynamic>;

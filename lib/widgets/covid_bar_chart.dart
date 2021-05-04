@@ -88,8 +88,9 @@ class _CovidBarChartState extends State<CovidBarChart> {
                 return true;
               },
               title: Text(lang("intro_chooseWeek6")),
-              child: NumberPicker.horizontal(
-                initialValue: indexWeeks,
+              child: NumberPicker(
+                axis: Axis.horizontal,
+                value: indexWeeks,
                 minValue: 1,
                 maxValue: getNumberOfWeek(),
                 onChanged: (val) {
@@ -174,7 +175,7 @@ class _CovidBarChartState extends State<CovidBarChart> {
             bottomTitles: SideTitles(
               margin: 10.0,
               showTitles: true,
-              textStyle: Styles.chartLabelsTextStyle,
+              getTextStyles: (i) => Styles.chartLabelsTextStyle,
               rotateAngle: 35.0,
               getTitles: (double value) {
                 return DateFormat('MMM dd')
@@ -185,7 +186,7 @@ class _CovidBarChartState extends State<CovidBarChart> {
               margin: 10.0,
               interval: devided.toDouble(),
               showTitles: true,
-              textStyle: Styles.chartLabelsTextStyle,
+              getTextStyles: (i) => Styles.chartLabelsTextStyle,
               getTitles: (value) {
                 return '${NumberFormat.compact().format(value)}';
               },
@@ -212,7 +213,7 @@ class _CovidBarChartState extends State<CovidBarChart> {
                     barRods: [
                       BarChartRodData(
                         y: value,
-                        color: Colors.red,
+                        colors: [Colors.red],
                         width: 10,
                       ),
                     ],

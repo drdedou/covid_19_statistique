@@ -36,7 +36,7 @@ class CountryDropdown extends StatelessWidget {
               onTap: () {
                 showDialog(
                   context: context,
-                  child: CountryDropDown(
+                  builder: (_) => CountryDropDown(
                     flags: (snapshot.data as Map<String, String>),
                     countryName:
                         isAR ? falgs.getCountryNameAr : falgs.getCountryName,
