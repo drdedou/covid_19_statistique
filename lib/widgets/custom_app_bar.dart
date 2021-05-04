@@ -1,3 +1,4 @@
+import 'package:country_codes/country_codes.dart';
 import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -20,46 +21,40 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     );
   }
 
-  Future<void> getLocation(BuildContext context) async {
-    final lang = DemoLocalizations.of(context).getTraslat;
-    bool error = false;
-    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
 
-    Location location = new Location();
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
-
-    try {
-      _serviceEnabled = await location.serviceEnabled();
-      if (!_serviceEnabled) {
-        _serviceEnabled = await location.requestService();
-        if (!_serviceEnabled) {
-          return;
-        }
-      }
-
-      _permissionGranted = await location.hasPermission();
-      if (_permissionGranted == PermissionStatus.denied) {
-        _permissionGranted = await location.requestPermission();
-        if (_permissionGranted != PermissionStatus.granted) {
-          return;
-        }
-      }
-
-      _locationData = await location.getLocation();
-
-      List<Placemark> placemark = await geolocator.placemarkFromCoordinates(
-          _locationData.latitude, _locationData.longitude);
-      Provider.of<Flags>(context, listen: false)
-          .setCountry(placemark.first.isoCountryCode);
-    } catch (_) {
-      if (error) {
-        showLongToast(lang('er_location_disable'));
-      } else {
-        showLongToast(lang('er_permission'));
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
       }
     }
+    if (permission == LocationPermission.deniedForever) {
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  Future<void> getLocation(BuildContext context) async {
+    await CountryCodes
+        .init(); // Optionally, you may provide a `Locale` to get countrie's localizadName
+
+    final Locale deviceLocale = CountryCodes.getDeviceLocale();
+    print(deviceLocale.languageCode); // Displays en
+    print(deviceLocale.countryCode); // Displays US
+
+    //final position = await _determinePosition();
+
+    Provider.of<Flags>(context, listen: false)
+        .setCountry(deviceLocale.countryCode);
   }
 
   @override
@@ -87,7 +82,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         textAlign: TextAlign.center,
       ),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           child: DescribedFeatureOverlay(
             featureId: language2,
             tapTarget: const Icon(Icons.language),
